@@ -1,0 +1,160 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div id="titulo" class="container justify-content-center"><h1>Gerenciamento</h1></div>
+<div id="corpo" class="container">
+  <div class="row">
+    <div id="btn-cad" class="col-lg-12">
+      <div class="dropdown">
+        <button type="button" id="btn-cad" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+          Usuários
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="http://localhost:4200/gerenciamento">Cargos</a>
+          <a class="dropdown-item" href="http://localhost:4200/componentes">Componentes</a>
+          <a class="dropdown-item" href="http://localhost:4200/equipamentos">Equipamentos</a>
+          <a class="dropdown-item" href="http://localhost:4200/equipamentosuperior">Equipamentos Superiores</a>
+          <a class="dropdown-item" href="http://localhost:4200/epi">Equipamentos de Proteção</a>
+          <a class="dropdown-item" href="http://localhost:4200/nivel">Níveis de Acesso</a>
+        </div>
+      </div>
+    </div>
+  </div>
+    <input class="form-control" id="myInput" type="text" placeholder="Pesquisar Usuário">
+    <div class="row">
+      <div id="table" class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            Usuários Cadastrados
+            
+            <button id="superior-button" onclick="document.getElementById('id01').style.display='block'" type="button" class="btn btn-danger">+</button>
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Usuário</th>
+                  <th>Cargo</th>
+                  <th>Nível de Acesso</th>
+                  <th>Opções</th>
+                </tr>
+              </thead>
+              <tbody id="myTable" *ngFor="let usuario of usuarios">
+                <tr>
+                  <td>{{usuario.nome}}</td>
+                  <td>{{usuario.cargo}}</td>
+                  <td>{{usuario.nivel}}</td>
+                  <td><button (click)="informacoesAlterarUsuario(usuario)" onclick="document.getElementById('id02').style.display='block'" type="button" id="btn-cad-1" class="btn btn-danger ">Editar</button></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="col-lg-4">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="id01" class="w3-modal">
+    <div  class="w3-modal-content">
+      <div id="cont" class="w3-container">
+        <div class="row">
+          <div id="cadastro" class="col-sm">
+            <div class="card">
+              <div class="card-header">
+                Cadastro de Usuários
+              </div>
+              <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Nome</span>
+                        </div>
+                        <input [(ngModel)]="nome"  type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                      </div>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Senha</span>
+                        </div>
+                        <input [(ngModel)]="senha"  type="password" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                      </div>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Crachá</span>
+                        </div>
+                        <input [(ngModel)]="cracha"  type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                      </div>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Nível de Acesso</span>
+                        </div>
+                        <select  class="custom-select" id="inputGroupSelect01" [(ngModel)]="nivel">
+                            <option *ngFor="let nivel of niveis">{{nivel.nivel}}</option>
+                          </select>
+                      </div>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Cargo</span>
+                        </div>
+                        <select  class="custom-select" id="inputGroupSelect01" [(ngModel)]="cargo">
+                            <option *ngFor="let cargo of cargos">{{cargo.cargo}}</option>
+                          </select>
+                      </div>
+                    </div>
+                  </div>
+                  <button id="voltar"  type="button" class="btn btn-danger" (click)="cadastraUsuario()">Cadastrar</button>
+                  <button id="voltar" onclick="document.getElementById('id01').style.display='none'" type="button" class="btn btn-danger">Voltar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="id02" class="w3-modal">
+    <div  class="w3-modal-content">
+      <div id="cont" class="w3-container">
+        <div class="row">
+          <div id="cadastro" class="col-sm">
+            <div class="card">
+              <div class="card-header">
+                Editar Informações do Usuário {{nomeA}}
+                <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Senha</span>
+                          </div>
+                          <input [(ngModel)]="senhaA" type="password" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Cargo</span>
+                          </div>
+                          <input [(ngModel)]="cargoA" type="text" class="form-control" aria-label="Username" placeholder="Novo Cargo" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Nível de Acesso</span>
+                          </div>
+                          <input [(ngModel)]="nivelA"  type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" placeholder="Novo Nível de Acesso">
+                        </div>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Crachá</span>
+                          </div>
+                          <input [(ngModel)]="crachaA"  type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" placeholder="Novo Crachá">
+                        </div>
+                      </div>
+                    </div>
+                    <button id="voltar" (click)="alterarUsuario()"  type="button" class="btn btn-danger">Alterar</button>
+                    <button id="voltar" onclick="document.getElementById('id02').style.display='none'" type="button" class="btn btn-danger">Voltar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

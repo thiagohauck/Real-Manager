@@ -1,0 +1,100 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div id="titulo" class="container justify-content-center"><h1>Gerenciamento</h1></div>
+<div id="corpo" class="container">
+  <div class="row">
+    <div id="btn-cad" class="col-lg-12">
+      <div class="dropdown">
+        <button type="button" id="btn-cad" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+          Componentes
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="http://localhost:4200/gerenciamento">Cargo</a>
+          <a class="dropdown-item" href="http://localhost:4200/equipamentos">Equipamentos</a>
+          <a class="dropdown-item" href="http://localhost:4200/equipamentosuperior">Equipamentos Superiores</a>
+          <a class="dropdown-item" href="http://localhost:4200/epi">Equipamentos de Proteção</a>
+          <a class="dropdown-item" href="http://localhost:4200/nivel">Níveis de Acesso</a>
+          <a class="dropdown-item" href="http://localhost:4200/usuarios">Usuários</a>
+        </div>
+      </div>
+    </div>
+  </div>
+    <input class="form-control" id="myInput" type="text" placeholder="Pesquisar Componente">
+    <div class="row">
+      <div id="table" class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            Componentes Cadastrados
+            
+            <button id="superior-button" onclick="document.getElementById('id01').style.display='block'" type="button" class="btn btn-danger">+</button>
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Componente</th>
+                  <th scope="col">Valor Unitário</th>
+                  <th scope="col">Unidade de Medida</th>
+                </tr>
+              </thead>
+              <tbody id="myTable" *ngFor="let componente of componentes">
+                <tr>
+                  <td>{{componente.componente}}</td>
+                  <td>{{componente.valor}}</td>
+                  <td>{{componente.unidademedida}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="col-lg-4">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="id01" class="w3-modal">
+    <div  class="w3-modal-content">
+      <div id="cont" class="w3-container">
+        <div class="row">
+          <div id="cadastro" class="col-sm">
+            <div class="card">
+              <div class="card-header">
+                Cadastro de Componentes
+              </div>
+              <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Novo Componente</span>
+                        </div>
+                        <input [(ngModel)]="novoComponente"  type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                      </div>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Quantidade</span>
+                        </div>
+                        <input [(ngModel)]="valor"  type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                      </div>
+                      <div class="input-group flex-nowrap">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputGroupSelect01">Unidade de Medida</label>
+                        </div>
+                        <select  class="custom-select" id="inputGroupSelect01" [(ngModel)]="unidademedida">
+                          <option value="g">g(Grama)</option>
+                          <option value="Kg">Kg(Kilograma)</option>
+                          <option value="m">m(Metro)</option>
+                          <option value="Pç">Pç(Peça)</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <button id="voltar"  type="button" class="btn btn-danger" (click)="cadastraComponente()">Cadastrar</button>
+                  <button id="voltar" onclick="document.getElementById('id01').style.display='none'" type="button" class="btn btn-danger">Voltar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

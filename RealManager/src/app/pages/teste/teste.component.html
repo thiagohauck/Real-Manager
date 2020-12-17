@@ -1,0 +1,48 @@
+<div class="page-container">
+    <div class="sidebar">
+
+        <div class="text-center p-3">
+            <img src="../../../assets/images/logo.png" width="60%">
+        </div>
+        
+
+        <div class="list-items">
+
+            <div routerLink="dashboard" class="list-item">
+                
+                <i class="material-icons">apps</i>
+                
+                Dashboard
+
+            </div>
+            <div routerLink="ordens" class="list-item">
+                
+                <i class="material-icons">assignment</i>
+                
+                Ordens de Manutenção
+
+            </div>
+            <div routerLink="gerenciamento" class="list-item">
+                
+                <i class="material-icons">assessment</i>
+                
+                Gerenciamento
+
+            </div>
+            <div class="list-item">
+                
+                <i class="material-icons">exit_to_app</i>
+
+                Sair
+            
+            </div>
+        </div>
+
+    </div>
+
+    <div class="page-content-container">
+
+        <router-outlet></router-outlet>
+
+    </div>
+</div>

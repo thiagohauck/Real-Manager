@@ -1,0 +1,217 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div id="titulo" class="container justify-content-center"><h1>Cadastrar Ordem</h1></div>
+
+<div id="corpo" class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="dropdown">
+          <button type="button" id="button-new-order" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+            Ordem Corretiva
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="http://localhost:4200/neworder">Ordem Preventiva</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="row">
+    <div id="cadastro" class="col-sm">
+      <div class="card">
+        <div class="card-header">
+          Informações Principais
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div id="cadastro" class="col-sm-4">
+              <div class="input-group flex-nowrap">
+                <input type="text" class="form-control" placeholder="Número da Ordem" [(ngModel)]="numeroordemC">
+              </div>
+            </div>
+            <div id="cadastro" class="col-sm-4">
+              <div class="input-group flex-nowrap">
+                <input type="text" class="form-control" placeholder="Número da Nota" [(ngModel)]="numeronotaC">
+              </div>
+            </div>
+            <div id="cadastro" class="col-sm-4">
+              <div class="input-group flex-nowrap">
+                <input type="text" class="form-control" placeholder="Título" [(ngModel)]="tituloC">
+              </div>
+            </div>
+        </div>
+        <div class="row">
+          <div id="cadastro" class="col-sm-4">
+            <div class="input-group flex-nowrap">
+              <input type="text" class="form-control" placeholder="Descrição da Nota" [(ngModel)]="descricaonotaC">
+            </div>
+          </div>
+          <div id="cadastro" class="col-sm-4">
+            <div class="input-group flex-nowrap">
+              <input type="text" class="form-control" placeholder="Solicitante" [(ngModel)]="solicitanteC">
+            </div>
+          </div>
+          <div id="cadastro" class="col-sm-4">
+            <div class="input-group flex-nowrap">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Emissão</span>
+              </div>
+              <input type="date" class="form-control" placeholder="Emissão" [(ngModel)]="emissaoC">
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div id="cadastro" class="col-sm-12">
+          <div class="input-group flex-nowrap">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Responsável</label>
+            </div>
+            <select  class="custom-select" id="inputGroupSelect01" [(ngModel)]="responsavelC">
+              <option *ngFor="let manutentor of manutentor">{{manutentor.nome}}</option>
+            </select>
+          </div>
+        </div>
+    </div>
+      <div class="row">
+        <div id="cadastro" class="col-sm-12">
+          <div class="input-group flex-nowrap">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Local de Instalação</label>
+            </div>
+            <select  class="custom-select" id="inputGroupSelect01" [(ngModel)]="localdeinstalacaoC">
+              <option *ngFor="let local of local">{{local.localdeinstalacao}}</option>
+            </select>
+          </div>
+        </div>
+    </div>
+    <div class="row">
+      <div id="cadastro" class="col-sm-12">
+        <div class="input-group flex-nowrap">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Equipamento</label>
+          </div>
+          <select  class="custom-select" id="inputGroupSelect01" [(ngModel)]="equipamentoC">
+            <option *ngFor="let equipamento of equipamento">{{equipamento.equipamento}}</option>
+          </select>
+        </div>
+      </div>
+  </div>
+  <div class="row">
+    <div id="cadastro" class="col-sm-12">
+      <div class="input-group flex-nowrap">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Equipamento Superior</label>
+        </div>
+        <select  class="custom-select" id="inputGroupSelect01" [(ngModel)]="equipamentoSuC">
+          <option *ngFor="let equipamentoSu of equipamentoSu">{{equipamentoSu.equipamentosuperior}}</option>
+        </select>
+      </div>
+    </div>
+</div>
+<div class="row">
+  <div id="cadastro" class="col-sm-12">
+    <div class="input-group flex-nowrap">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Prioridade</label>
+      </div>
+      <select  class="custom-select" id="inputGroupSelect01" [(ngModel)]="prioridadeC">
+        <option value="Baixa">Baixa</option>
+        <option value="Média">Média</option>
+        <option value="Alta">Alta</option>
+        <option value="Muito Alta">Muito Alta</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div id="cadastro" class="col-sm-12">
+    <div class="input-group flex-nowrap">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Requer Parada</label>
+      </div>
+      <select  class="custom-select" id="inputGroupSelect01" [(ngModel)]="requerparadaC">
+        <option value="Sim">Sim</option>
+        <option value="Não">Não</option>
+      </select>
+    </div>
+  </div>
+</div>
+      <div class="row">
+        <div id="cadastro" class="col-sm-12">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Descrição do Problema</span>
+            </div>
+            <textarea class="form-control" aria-label="With textarea" [(ngModel)]="descricaoproblemaC"></textarea>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="row">
+  <div id="cadastro" class="col-sm">
+    <div class="card">
+      <div class="card-header">
+        Datas e Horários
+      </div>
+      <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3">Inicio Planejado</span>
+                </div>
+                <input type="date" class="form-control" id="basic-url" aria-describedby="basic-addon3" [(ngModel)]="iniciopC">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3">Fim Planejado</span>
+                </div>
+                <input type="date" class="form-control" id="basic-url" aria-describedby="basic-addon3" [(ngModel)]="fimpC">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3">Inicio Programado</span>
+                </div>
+                <input type="date" class="form-control" id="basic-url" aria-describedby="basic-addon3" [(ngModel)]="inicioproC">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3">Fim Programado</span>
+                </div>
+                <input type="date" class="form-control" id="basic-url" aria-describedby="basic-addon3" [(ngModel)]="fimproC">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3">Hora Inicio Programado</span>
+                </div>
+                <input type="time" class="form-control" id="basic-url" aria-describedby="basic-addon3" [(ngModel)]="horainicioproC">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3">Hora Fim Programado</span>
+                </div>
+                <input type="time" class="form-control" id="basic-url" aria-describedby="basic-addon3" [(ngModel)]="horafimproC">
+              </div>
+            </div>
+          </div>
+          <button (click)="cadastraOrdemC()" type="button" class="btn btn-danger">Cadastrar</button>
+      </div>
+    </div>
+  </div>
+</div>
